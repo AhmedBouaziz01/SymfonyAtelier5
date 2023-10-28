@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> le nombre des auteurs est : {{author | length}} </h1>
+    <table border="1"> 
+        <tr>
+           <th> id </th> 
+           <th> picture </th> 
+           <th> username </th> 
+           <th> email </th> 
+           <th> nb_books </th> 
+        </tr>
+        {% for a in author %}
+        <tr>
+         <td> {{a.id}}</td>
+         <td> <img src="{{a.picture}}"></td>
+         <td> {{a.username | upper }}</td>
+         <td> {{a.email}}</td>
+         <td> {{a.nb_books}}</td>
+        </tr>
+        {% else %}
+        <h1> Tableau vide </h1>
+    
+        {% endfor %}
+    </table>
+    {% set nbTotal=0 %}
+    {% for a in author %}
+    {% set nbTotal=nbTotal+a.nb_books %}
+    {% endfor %}
+    <p> le nombre total des livres est : {{nbTotal}} </p>
+</body>
+</html>
